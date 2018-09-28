@@ -3,7 +3,7 @@ import string
 import os
 
 def parseBook(inputFile):
-    bookFile = open(inputFile, 'r') # Establish a file reader
+    bookFile = open(inputFile, 'r', encoding='utf-16') # Establish a file reader
     book = bookFile.read() # Read the file
     bookWithoutPunctuation = book.translate(str.maketrans('','',string.punctuation)) # Get rid of punctuation
     bookWithoutNumbers = bookWithoutPunctuation.translate(str.maketrans('','',string.digits))
@@ -12,7 +12,7 @@ def parseBook(inputFile):
     cleanBook = map(lambda word: word.lower(), bookListWithoutEmpty) # Convert all letters to lowercase
     return list(cleanBook)
 
-wordFile = open('Word-list.txt', 'r')
+wordFile = open('Word-list.txt', 'r', encoding='utf-16')
 masterList = list(map(lambda word: word.strip().lower(), wordFile.read().split(',')))
 
 with open('results.csv', 'w') as f:
