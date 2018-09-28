@@ -6,7 +6,8 @@ def parseBook(inputFile):
     bookFile = open(inputFile, 'r') # Establish a file reader
     book = bookFile.read() # Read the file
     bookWithoutPunctuation = book.translate(str.maketrans('','',string.punctuation)) # Get rid of punctuation
-    bookList = re.split(' |\r\n|\n', bookWithoutPunctuation) # Split by space or newline
+    bookWithoutNumbers = bookWithoutPunctuation.translate(str.maketrans('','',string.digits))
+    bookList = re.split(' |\r\n|\n', bookWithoutNumbers) # Split by space or newline
     bookListWithoutEmpty = list(filter(None, bookList)) # Remove empty elements
     cleanBook = map(lambda word: word.lower(), bookListWithoutEmpty) # Convert all letters to lowercase
     return list(cleanBook)
