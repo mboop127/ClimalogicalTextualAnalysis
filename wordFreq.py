@@ -29,3 +29,5 @@ with open('results.csv', 'w') as f:
         for word in masterList:
             if word in dict:
                 f.write(word + ',' + str(dict[word]) + '\n')
+            else:
+                f.write(word + ',0\n')
