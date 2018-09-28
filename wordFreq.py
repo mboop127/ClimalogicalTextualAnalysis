@@ -15,7 +15,7 @@ def parseBook(inputFile):
 wordFile = open('Word-list.txt', 'r', encoding='utf-16')
 masterList = list(map(lambda word: word.strip().lower(), wordFile.read().split(',')))
 
-with open('results.csv', 'w') as f:
+with open('results.csv', 'w', encoding='utf-16') as f:
     for filename in os.listdir(os.getcwd() + '/books'):
 
         dict = {} # Establish a dictionary
